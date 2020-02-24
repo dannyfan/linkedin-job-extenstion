@@ -40,12 +40,12 @@ function sortJobsByTime() {
     const jobList = document.querySelector('ul.jobs-jymbii__list');
     const jobPosts = document.querySelectorAll('li.job-card');
     const jobPostsArr = Array.prototype.slice.call(jobPosts);
-    
+
     jobPostsArr.sort(function(a, b) {
         let valueA = convertTimeTextToValue(a.querySelector('.job-card__listed-status > *').textContent);
         let valueB = convertTimeTextToValue(b.querySelector('.job-card__listed-status > *').textContent);
-        if (valueA < valueB) return 1;
-        if (valueA > valueB) return -1;
+        if (valueA > valueB) return 1;
+        if (valueA < valueB) return -1;
         return 0;
     });
 
