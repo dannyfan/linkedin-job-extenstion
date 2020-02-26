@@ -40,7 +40,7 @@ function sortJobsByTime() {
     const jobList = document.querySelector('ul.jobs-jymbii__list');
     const jobPosts = document.querySelectorAll('li.job-card');
     const jobPostsArr = Array.prototype.slice.call(jobPosts);
-
+    
     jobPostsArr.sort(function(a, b) {
         let valueA = convertTimeTextToValue(a.querySelector('.job-card__listed-status > *').textContent);
         let valueB = convertTimeTextToValue(b.querySelector('.job-card__listed-status > *').textContent);
@@ -52,6 +52,16 @@ function sortJobsByTime() {
     for (let i = 0; i < jobPostsArr.length; i++) {
         jobList.appendChild(jobPostsArr[i]);
     }
+}
+
+function openLinksNewTab() {
+    const jobLinks = document.querySelector('a.job-card__link-wrapper');
+    jobLinks.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const link = this.getAttribute('href');
+        window.open(link, '_blank');
+    });
 }
 
 function createSortButton() {
@@ -79,4 +89,5 @@ function createSortButton() {
 
     observer.observe(document, config);
     createSortButton();
+    openLinksNewTab();
 })();
