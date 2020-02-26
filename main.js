@@ -68,11 +68,7 @@ function openLinksNewTab() {
 
 function showFullJobDescription() {
     const button = document.querySelector('button[data-control-name="see_more"]');
-    const jobDescription = document.querySelector('.jobs-description--is-truncated');
-    console.log(button);
-    console.log(jobDescription);
-    if (button && jobDescription) {
-        console.log('click');
+    if (button) {
         button.click();
     }
 }
@@ -106,11 +102,6 @@ function createSortButton() {
                 if (mutation.target.classList.contains('gp-promo-embedded-card-2__card')) {
                     hidePremiumAd();
                 }
-                // if (mutation.target.classList.contains('application-outlet') && !clicked) {
-                //     console.log('job description here');
-                //     showFullJobDescription();
-                //     clicked = true;
-                // }
             }
         }
     });
@@ -119,7 +110,7 @@ function createSortButton() {
     createSortButton();
     openLinksNewTab();
 
-    window.onload = function() {
+    setTimeout(function() {
         showFullJobDescription();
-    }
+    }, 3000);
 })();
