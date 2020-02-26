@@ -60,7 +60,10 @@ function openLinksNewTab() {
         e.preventDefault();
         e.stopPropagation();
         const link = this.getAttribute('href');
-        window.open(link, '_blank');
+        if (!this.getAttribute('target')) {
+            this.setAttribute('target', '_blank');
+            window.open(link, '_blank');
+        };
     }));
 }
 
@@ -85,9 +88,9 @@ function createSortButton() {
     const observer = new MutationObserver(function(mutationsList, observer) {
         hideMessageBar();
         hidePremiumAd();
+        openLinksNewTab();
     });
 
     observer.observe(document, config);
     createSortButton();
-    openLinksNewTab();
 })();
