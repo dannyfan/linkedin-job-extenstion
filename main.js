@@ -55,13 +55,13 @@ function sortJobsByTime() {
 }
 
 function openLinksNewTab() {
-    const jobLinks = document.querySelector('a.job-card__link-wrapper');
-    jobLinks.addEventListener('click', function(e) {
+    const jobLinks = Array.prototype.slice.call(document.querySelectorAll('a.job-card__link-wrapper'));
+    jobLinks.forEach(jobPost => jobPost.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
         const link = this.getAttribute('href');
         window.open(link, '_blank');
-    });
+    }));
 }
 
 function createSortButton() {
