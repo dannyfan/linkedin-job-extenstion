@@ -69,14 +69,16 @@ function openLinksNewTab() {
 
 function createSortButton() {
     const container = document.querySelector('.ph5.pb0.pt2');
-    const button = document.createElement('button');
-    const buttonText = document.createTextNode('Sort Jobs (Newest - Oldest)');
-    button.appendChild(buttonText);
-    button.classList.add('artdeco-button');
-    button.addEventListener('click', function() {
-        sortJobsByTime();
-    });
-    container.appendChild(button);
+    if (container) {
+        const button = document.createElement('button');
+        const buttonText = document.createTextNode('Sort Jobs (Newest - Oldest)');
+        button.appendChild(buttonText);
+        button.classList.add('artdeco-button');
+        button.addEventListener('click', function() {
+            sortJobsByTime();
+        });
+        container.appendChild(button);
+    }
 }
 
 (function() {
